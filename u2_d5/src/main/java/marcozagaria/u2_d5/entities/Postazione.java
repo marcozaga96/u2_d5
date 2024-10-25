@@ -25,12 +25,12 @@ public class Postazione {
     private int numeroOccupanti;
 
     @ManyToOne
+    @JoinColumn(name = "edificio_id")
     private Edificio edificio;
 
-    public Postazione(String descrizione, TipoEvento tipoEvento, int numeroOccupanti, Edificio edificio) {
+    public Postazione(String descrizione, TipoEvento tipoEvento, int numeroOccupanti) {
         this.descrizione = descrizione;
         this.tipoEvento = tipoEvento;
         this.numeroOccupanti = numeroOccupanti;
-        this.edificio = edificio;
     }
 }
