@@ -14,6 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+
 public class Prenotazione {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,4 +34,11 @@ public class Prenotazione {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "Prenotazione{" +
+                "id=" + id +
+                ", data=" + data +
+                '}';
+    }
 }

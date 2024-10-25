@@ -1,10 +1,7 @@
 package marcozagaria.u2_d5.entities;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -13,6 +10,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

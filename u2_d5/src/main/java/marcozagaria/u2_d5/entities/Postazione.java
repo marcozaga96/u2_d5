@@ -14,6 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+
 public class Postazione {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,5 +33,15 @@ public class Postazione {
         this.descrizione = descrizione;
         this.tipoEvento = tipoEvento;
         this.numeroOccupanti = numeroOccupanti;
+    }
+
+    @Override
+    public String toString() {
+        return "Postazione{" +
+                "id=" + id +
+                ", descrizione='" + descrizione + '\'' +
+                ", tipoEvento=" + tipoEvento +
+                ", numeroOccupanti=" + numeroOccupanti +
+                '}';
     }
 }

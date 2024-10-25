@@ -79,4 +79,26 @@ public class PrenotazioneService {
         log.info("la prenotazione in data " + newPrenotazione.getData() + " nella postazione " + newPrenotazione.getPostazione() + " è stata salvata correttamente!");
     }
 
+    public void creaPrenotazione(Prenotazione prenotazione) {
+
+        List<Prenotazione> prenotazioniPerData = prenotazioneRepository.findByPostazioneIdAndData(prenotazione.getPostazione().getId(), prenotazione.getData());
+        if (!prenotazioniPerData.isEmpty()) {
+            throw new RuntimeException("La postazione è già prenotata per questa data.");
+        }
+
+        List<Prenotazione> prenotazioniUtentePerData = prenotazioneRepository.findByUtenteIdAndData(prenotazione.getUtente().getId(), prenotazione.getData());
+        if (!prenotazioniUtentePerData.isEmpty()) {
+            throw new RuntimeException("L'utente ha già una prenotazione per questa data.");
+        }
+        this.savePrenotazione(prenotazione);
+    }
+
+    public List<Prenotazione> getPrenotazioni() {
+        return prenotazioneRepository.findAll();
+    }
+
+    public List<Postazione> searchPostazione(TipoEvento tipoEvento, String città) {
+        return postazioneRepository.findByTipoEventoAndEdificio_città(tipoEvento, città);
+    }
+
 }
